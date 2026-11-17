@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petcare.controller.InventoryController"
+      spacing="16">
+
+    <!-- Top Action Bar -->
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <TextField fx:id="searchField" promptText="🔍 Search medicine by name, category, brand..." prefWidth="350" styleClass="search-field"/>
+        
+        <CheckBox fx:id="lowStockFilterCheck" text="⚠️ Show Low Stock Only" style="-fx-font-weight: bold; -fx-text-fill: #DC2626;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="➕ Add Medicine" onAction="#handleAddMedicine" styleClass="btn-primary"/>
+        <Button text="📦 Adjust Stock" onAction="#handleAdjustStock" styleClass="btn-secondary"/>
+        <Button text="✏️ Edit Medicine" onAction="#handleEditMedicine" styleClass="btn-secondary"/>
+        <Button text="🗑️ Remove" onAction="#handleDeleteMedicine" styleClass="btn-danger"/>
+        <Button text="🔄 Refresh" onAction="#loadMedicines" styleClass="btn-secondary"/>
+    </HBox>
+
+    <!-- Medicine Table -->
+    <TableView fx:id="medicineTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+        <columns>
+            <TableColumn fx:id="colMedName" text="Medicine Name" prefWidth="180"/>
+            <TableColumn fx:id="colCategory" text="Category" prefWidth="130"/>
+            <TableColumn fx:id="colForm" text="Dosage Form" prefWidth="110"/>
+            <TableColumn fx:id="colStrength" text="Strength" prefWidth="90"/>
+            <TableColumn fx:id="colStock" text="Stock Qty" prefWidth="85"/>
+            <TableColumn fx:id="colMinLevel" text="Min Level" prefWidth="85"/>
+            <TableColumn fx:id="colPrice" text="Unit Price" prefWidth="95"/>
+            <TableColumn fx:id="colExpiry" text="Expiry Date" prefWidth="110"/>
+            <TableColumn fx:id="colStatus" text="Stock Status" prefWidth="120"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+
+</VBox>

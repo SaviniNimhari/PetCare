@@ -1,0 +1,46 @@
+/* PetCare Login Page Stylesheet */
+
+.login-root {
+    -fx-background-color: #0F172A;
+    -fx-font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.login-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16px;
+    -fx-padding: 36 32 36 32;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 24, 0, 0, 10);
+}
+
+.login-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0F172A;
+}
+
+.login-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748B;
+}
+
+.login-btn {
+    -fx-background-color: #0D9488;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.login-btn:hover {
+    -fx-background-color: #0F766E;
+}
+
+.demo-account-box {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 12px;
+}

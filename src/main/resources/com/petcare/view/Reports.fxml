@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petcare.controller.ReportsController"
+      spacing="16">
+
+    <!-- Top Action Bar -->
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Select Report Type:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="reportTypeCombo" prefWidth="280"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="⚡ Generate Report" onAction="#generateReport" styleClass="btn-primary"/>
+    </HBox>
+
+    <VBox styleClass="kpi-card" spacing="10" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="reportHeaderLabel" text="Report Preview" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #0F172A;"/>
+        </HBox>
+
+        <TextArea fx:id="reportOutputArea" editable="false" VBox.vgrow="ALWAYS"
+                  style="-fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 12px; -fx-text-fill: #0F172A; -fx-background-color: #FFFFFF; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;"/>
+    </VBox>
+
+</VBox>

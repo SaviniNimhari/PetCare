@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petcare.controller.MedicalRecordController"
+      spacing="16">
+
+    <TabPane styleClass="tab-pane" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <!-- TAB 1: CLINICAL CONSULTATION HISTORY -->
+        <Tab text="🩺 Clinical Consultations &amp; Treatments">
+            <VBox spacing="14" style="-fx-padding: 16 0 0 0;">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <Label text="Select Patient Pet:" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="petSelectorCombo" prefWidth="250"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="➕ Record New Clinical Visit" onAction="#handleAddClinicalRecord" styleClass="btn-primary"/>
+                    <Button text="💊 Prescribe Medicine" onAction="#handleAddPrescription" styleClass="btn-secondary"/>
+                    <Button text="🔄 Refresh" onAction="#loadRecordsForSelectedPet" styleClass="btn-secondary"/>
+                </HBox>
+
+                <SplitPane dividerPositions="0.60" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                    <!-- Left: Table of Clinical Records -->
+                    <TableView fx:id="recordsTable" styleClass="table-view">
+                        <columns>
+                            <TableColumn fx:id="colDate" text="Visit Date" prefWidth="95"/>
+                            <TableColumn fx:id="colPet" text="Pet" prefWidth="110"/>
+                            <TableColumn fx:id="colVet" text="Attending Doctor" prefWidth="150"/>
+                            <TableColumn fx:id="colDiagnosis" text="Diagnosis" prefWidth="180"/>
+                            <TableColumn fx:id="colTreatment" text="Treatment Administered" prefWidth="220"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+
+                    <!-- Right: Details & Attached Prescriptions -->
+                    <VBox spacing="12" style="-fx-padding: 0 0 0 12;">
+                        <VBox styleClass="kpi-card" spacing="8" VBox.vgrow="ALWAYS">
+                            <Label text="Clinical Encounter Summary" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #0F172A;"/>
+                            <Label fx:id="recordDetailsLabel" wrapText="true" text="Select a record on the left to see details." style="-fx-text-fill: #334155; -fx-font-size: 12px;"/>
+                            
+                            <Separator/>
+                            
+                            <Label text="Prescribed Medications" style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #0D9488;"/>
+                            <ListView fx:id="prescriptionsListView" prefHeight="140" style="-fx-background-radius: 8px;"/>
+                        </VBox>
+                    </VBox>
+                </SplitPane>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 2: VACCINATIONS -->
+        <Tab text="💉 Vaccination History &amp; Reminders">
+            <VBox spacing="14" style="-fx-padding: 16 0 0 0;">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <Label text="Clinic Pet Vaccination Registry" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="➕ Log New Vaccination" onAction="#handleAddVaccination" styleClass="btn-primary"/>
+                    <Button text="🔄 Refresh" onAction="#loadVaccinations" styleClass="btn-secondary"/>
+                </HBox>
+
+                <TableView fx:id="vaccinationTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+                    <columns>
+                        <TableColumn fx:id="colVacPet" text="Pet" prefWidth="120"/>
+                        <TableColumn fx:id="colVacName" text="Vaccine Name" prefWidth="180"/>
+                        <TableColumn fx:id="colVacAdminDate" text="Date Given" prefWidth="110"/>
+                        <TableColumn fx:id="colVacDueDate" text="Next Booster Due" prefWidth="130"/>
+                        <TableColumn fx:id="colVacBatch" text="Batch #" prefWidth="110"/>
+                        <TableColumn fx:id="colVacVet" text="Administered By" prefWidth="160"/>
+                        <TableColumn fx:id="colVacStatus" text="Status" prefWidth="100"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+</VBox>

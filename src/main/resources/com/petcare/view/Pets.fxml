@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petcare.controller.PetController"
+      spacing="16">
+    
+    <TabPane styleClass="tab-pane" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <!-- TAB 1: PETS DIRECTORY -->
+        <Tab text="🐾 Registered Pets">
+            <VBox spacing="14" style="-fx-padding: 16 0 0 0;">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <TextField fx:id="searchPetField" promptText="🔍 Search pets by name, species, breed, microchip..." prefWidth="380" styleClass="search-field"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="➕ Register New Pet" onAction="#handleAddPet" styleClass="btn-primary"/>
+                    <Button text="✏️ Edit Pet" onAction="#handleEditPet" styleClass="btn-secondary"/>
+                    <Button text="🗑️ Delete Pet" onAction="#handleDeletePet" styleClass="btn-danger"/>
+                    <Button text="🔄 Refresh" onAction="#loadPets" styleClass="btn-secondary"/>
+                </HBox>
+
+                <TableView fx:id="petsTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+                    <columns>
+                        <TableColumn fx:id="colPetName" text="Pet Name" prefWidth="130"/>
+                        <TableColumn fx:id="colPetSpecies" text="Species" prefWidth="90"/>
+                        <TableColumn fx:id="colPetBreed" text="Breed" prefWidth="130"/>
+                        <TableColumn fx:id="colPetGender" text="Gender" prefWidth="80"/>
+                        <TableColumn fx:id="colPetWeight" text="Weight" prefWidth="80"/>
+                        <TableColumn fx:id="colPetOwner" text="Owner" prefWidth="180"/>
+                        <TableColumn fx:id="colPetMicrochip" text="Microchip ID" prefWidth="150"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 2: PET OWNERS -->
+        <Tab text="👤 Pet Owners">
+            <VBox spacing="14" style="-fx-padding: 16 0 0 0;">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <TextField fx:id="searchOwnerField" promptText="🔍 Search owners by name, phone, email..." prefWidth="380" styleClass="search-field"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="➕ Register Pet Owner" onAction="#handleAddOwner" styleClass="btn-primary"/>
+                    <Button text="✏️ Edit Owner" onAction="#handleEditOwner" styleClass="btn-secondary"/>
+                    <Button text="🗑️ Delete Owner" onAction="#handleDeleteOwner" styleClass="btn-danger"/>
+                    <Button text="🔄 Refresh" onAction="#loadOwners" styleClass="btn-secondary"/>
+                </HBox>
+
+                <TableView fx:id="ownersTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+                    <columns>
+                        <TableColumn fx:id="colOwnerName" text="Full Name" prefWidth="180"/>
+                        <TableColumn fx:id="colOwnerPhone" text="Phone Number" prefWidth="140"/>
+                        <TableColumn fx:id="colOwnerEmail" text="Email Address" prefWidth="200"/>
+                        <TableColumn fx:id="colOwnerCity" text="City" prefWidth="120"/>
+                        <TableColumn fx:id="colOwnerEmergency" text="Emergency Contact" prefWidth="160"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+</VBox>
